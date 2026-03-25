@@ -1,0 +1,5 @@
+{
+  "name": "SMS Gateway Console",
+  "description": "A private SMS gateway console to manage and send SMS tasks to connected Android devices via WebSocket.",
+  "requestFramePermissions": []
+}
