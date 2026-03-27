@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
-import { Smartphone, Send, CheckCircle2, XCircle, Clock, Server, AlertCircle, RefreshCw, FileSpreadsheet, Users } from 'lucide-react';
+import { Smartphone, Send, CheckCircle2, XCircle, Clock, Server, AlertCircle, RefreshCw, FileSpreadsheet, Users, Link, Copy } from 'lucide-react';
 import Papa from 'papaparse';
 import { cn } from './lib/utils';
 
@@ -273,6 +273,42 @@ export default function App() {
                     ))}
                   </ul>
                 )}
+              </div>
+            </section>
+
+            {/* Connection Info Panel */}
+            <section className="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+              <div className="px-5 py-4 border-b border-neutral-100 bg-neutral-50/50">
+                <h2 className="text-sm font-semibold text-neutral-700 flex items-center gap-2">
+                  <Link className="w-4 h-4 text-neutral-400" />
+                  Connection Info
+                </h2>
+              </div>
+              <div className="p-5 space-y-3">
+                <div>
+                  <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Server Address</p>
+                  <div className="flex items-center gap-2 bg-neutral-50 p-2 rounded border border-neutral-100">
+                    <code className="text-xs text-blue-600 font-mono break-all">{typeof window !== 'undefined' ? window.location.origin : 'Loading...'}</code>
+                    <button 
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          navigator.clipboard.writeText(window.location.origin);
+                        }
+                      }}
+                      className="text-neutral-400 hover:text-blue-600 transition-colors"
+                      title="Copy to clipboard"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Internal Port</p>
+                  <code className="text-xs text-neutral-600 font-mono bg-neutral-100 px-2 py-1 rounded">3000</code>
+                </div>
+                <p className="text-[10px] text-neutral-400 italic">
+                  Use the Server Address in your Android app to connect.
+                </p>
               </div>
             </section>
 
